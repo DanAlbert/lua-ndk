@@ -1,0 +1,30 @@
+From f35f92ae67a79b4a5f2db68498e6a32bdee75955 Mon Sep 17 00:00:00 2001
+From: Dan Albert <danalbert@google.com>
+Date: Sun, 30 Apr 2017 15:03:14 -0700
+Subject: [PATCH] Use our just built readline and ncurses.
+
+---
+ makefile | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/makefile b/makefile
+index 8160d4fb..46fc9653 100644
+--- a/makefile
++++ b/makefile
+@@ -57,6 +57,13 @@ MYCFLAGS= $(LOCAL) -std=c99 -DLUA_USE_LINUX -DLUA_COMPAT_5_2
+ MYLDFLAGS= $(LOCAL) -Wl,-E
+ MYLIBS= -ldl -lreadline
+ 
++MYCFLAGS += -I$(LIBREADLINE_PATH)/include
++MYLDFLAGS += -L$(LIBREADLINE_PATH)/lib
++
++MYCFLAGS += -I$(LIBNCURSES_PATH)/include
++MYLDFLAGS += -L$(LIBNCURSES_PATH)/lib
++MYLIBS += -lncurses
++
+ 
+ CC= clang-3.8
+ CFLAGS= -Wall -O2 $(MYCFLAGS)
+-- 
+2.13.0.rc0.306.g87b477812d-goog
+

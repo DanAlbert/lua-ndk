@@ -1,0 +1,11 @@
+--- readline-5.2.orig/histlib.h	2017-04-30 15:34:01.099798861 -0700
++++ readline-5.2/histlib.h	2017-04-30 15:24:28.171447127 -0700
+@@ -52,7 +52,7 @@
+ 
+ #ifndef member
+ #  ifndef strchr
+-extern char *strchr ();
++//extern char *strchr ();
+ #  endif
+ #define member(c, s) ((c) ? ((char *)strchr ((s), (c)) != (char *)NULL) : 0)
+ #endif
